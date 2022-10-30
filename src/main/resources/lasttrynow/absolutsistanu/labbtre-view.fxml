@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lasttrynow.absolutsistanu.HannahLabbTreController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <Button fx:id="squarebutton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#onSquareButtonClicked" text="Kvadrat">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Button fx:id="rectanglebutton" mnemonicParsing="false" onAction="#onRectangleButtonClicked" text="Rektangel">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+      </HBox>
+   </top>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <Label text="Välj färg">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <ColorPicker fx:id="mycolorpicker">
+            <value>
+               <Color />
+            </value>
+         </ColorPicker>
+         <Label text="Välj storlek">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <Slider fx:id="mysize" orientation="VERTICAL" prefHeight="234.0" prefWidth="97.0" showTickLabels="true" showTickMarks="true" value="50.0" />
+      </VBox>
+   </right>
+   <center>
+      <Canvas fx:id="canvas" height="280.0" onMouseClicked="#onCanvasClicked" width="280.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
