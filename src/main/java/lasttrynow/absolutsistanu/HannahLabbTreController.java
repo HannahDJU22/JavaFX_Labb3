@@ -26,16 +26,21 @@ public class HannahLabbTreController {
         context.setFill(Color.SILVER);
         context.fillRect(0, 0, 280, 280);
 
-        myModel.addShapeToMyShapeList();
+        mysize.valueProperty().bindBidirectional(myModel.size);
+        mycolorpicker.valueProperty().bindBidirectional(myModel.color);
+
+
 
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
 
         if (shapeController.equals("square")) {
-            context.setFill(mycolorpicker.getValue());
-            context.fillRect(mouseEvent.getX(), mouseEvent.getY(), mysize.getValue(), mysize.getValue());
-            myModel.myShapesList.add(new HannahsShape("square", (int) mouseEvent.getX(), (int) mouseEvent.getY(), mysize.getWidth(), mysize.getHeight(), mycolorpicker.getValue()));
+            myModel.createSquareShape(mouseEvent);
+            drawCanvas();
+            //context.setFill(mycolorpicker.getValue());
+           // context.fillRect(mouseEvent.getX(), mouseEvent.getY(), mysize.getValue(), mysize.getValue());
+           // myModel.myShapesList.add(new HannahsShape("square", (int) mouseEvent.getX(), (int) mouseEvent.getY(), mysize.getWidth(), mysize.getHeight(), mycolorpicker.getValue()));
         }
         if (shapeController.equals("rectangle")) {
             context.setFill(mycolorpicker.getValue());
@@ -44,6 +49,20 @@ public class HannahLabbTreController {
 
         }
     }
+
+    public void drawCanvas(){
+        context.clearRect(0, 0, 280, 280);
+        context.setFill(Color.SILVER);
+        context.fillRect(0, 0, 280, 280);
+        for (HannahsShape shape: myModel.myShapesList
+             ) {
+            if(shape.getClass().equals(HannahsShape.class)){
+                context.setFill(shape.getColor());
+                context.fillRect(shape.getPositionX(), shape.getPositionY(),shape.getWidth(), shape.getHeight());
+            }}
+
+        }
+
 
     public void onSquareButtonClicked(ActionEvent actionEvent) {
 
