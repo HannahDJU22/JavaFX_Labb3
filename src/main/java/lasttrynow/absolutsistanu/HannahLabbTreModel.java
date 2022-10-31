@@ -17,9 +17,12 @@ public class HannahLabbTreModel {
     List<HannahsShape> myShapesList = new ArrayList<>();
 
     public void createSquareShape(MouseEvent mouseEvent) {
-        myShapesList.add(new HannahsShape("square", (int) mouseEvent.getX(), (int) mouseEvent.getY(), (Double) size.getValue(), (Double) size.getValue(), color.getValue()));
+        myShapesList.add(new Square("square", mouseEvent.getX(), mouseEvent.getY(), size.getValue(), size.getValue(), color.getValue()));
 
     }
+
+    //TODO
+    public void createRectangleShape(MouseEvent mouseEvent){}
 
 
 }

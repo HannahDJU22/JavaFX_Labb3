@@ -37,17 +37,27 @@ public class HannahLabbTreController {
 
         if (shapeController.equals("square")) {
             myModel.createSquareShape(mouseEvent);
-            drawCanvas();
-            //context.setFill(mycolorpicker.getValue());
-           // context.fillRect(mouseEvent.getX(), mouseEvent.getY(), mysize.getValue(), mysize.getValue());
-           // myModel.myShapesList.add(new HannahsShape("square", (int) mouseEvent.getX(), (int) mouseEvent.getY(), mysize.getWidth(), mysize.getHeight(), mycolorpicker.getValue()));
-        }
-        if (shapeController.equals("rectangle")) {
-            context.setFill(mycolorpicker.getValue());
-            context.fillRect(mouseEvent.getX(), mouseEvent.getY(), mysize.getValue() * 1.5, mysize.getValue());
-            myModel.myShapesList.add(new HannahsShape("rectangle", (int) mouseEvent.getX(), (int) mouseEvent.getY(), mysize.getWidth(), mysize.getHeight(), mycolorpicker.getValue()));
 
         }
+/*        if (shapeController.equals("rectangle")) {
+            context.setFill(mycolorpicker.getValue());
+            context.fillRect(mouseEvent.getX(), mouseEvent.getY(), mysize.getValue() * 1.5, mysize.getValue());
+           // myModel.myShapesList.add(new HannahsShape("rectangle", (int) mouseEvent.getX(), (int) mouseEvent.getY(), mysize.getWidth(), mysize.getHeight(), mycolorpicker.getValue()));
+
+        }*/
+        else if(shapeController.equals("isSelected")){
+            for (HannahsShape shape: myModel.myShapesList
+                 ) {if(shape.isShapeSelected(mouseEvent)){
+
+                shape.setColor(myModel.color.getValue());
+                shape.setHeight(myModel.size.get().doubleValue());
+                shape.setWidth(myModel.size.get().doubleValue());
+            }
+
+            }
+
+        }
+        drawCanvas();
     }
 
     public void drawCanvas(){
@@ -56,7 +66,7 @@ public class HannahLabbTreController {
         context.fillRect(0, 0, 280, 280);
         for (HannahsShape shape: myModel.myShapesList
              ) {
-            if(shape.getClass().equals(HannahsShape.class)){
+            if(shape.getClass().equals(Square.class)){
                 context.setFill(shape.getColor());
                 context.fillRect(shape.getPositionX(), shape.getPositionY(),shape.getWidth(), shape.getHeight());
             }}
@@ -74,5 +84,9 @@ public class HannahLabbTreController {
 
         shapeController="rectangle";
 
+    }
+
+    public void onSelectShape(ActionEvent actionEvent) {
+        shapeController="isSelected";
     }
 }
