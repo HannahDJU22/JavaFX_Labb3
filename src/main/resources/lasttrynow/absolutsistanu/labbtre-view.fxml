@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,37 +10,52 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lasttrynow.absolutsistanu.HannahLabbTreController">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
-         <Button fx:id="squarebutton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#onSquareButtonClicked" text="Kvadrat">
+         <Button fx:id="squarebutton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#onSquareButtonClicked" text="SQUARE">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Button>
-         <Button fx:id="rectanglebutton" mnemonicParsing="false" onAction="#onRectangleButtonClicked" text="Rektangel">
+         <Button fx:id="rectanglebutton" mnemonicParsing="false" onAction="#onRectangleButtonClicked" text="RECTANGLE">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Button>
-         <Button fx:id="selectbutton" mnemonicParsing="false" onAction="#onSelectShape" text="Select drawn shape" />
+         <Button fx:id="selectbutton" mnemonicParsing="false" onAction="#onSelectShape" text="Select shape to change">
+            <font>
+               <Font name="System Bold Italic" size="13.0" />
+            </font></Button>
       </HBox>
    </top>
    <right>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Label text="Välj färg">
+         <Label text="Choose color">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
+            <VBox.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin>
          </Label>
          <ColorPicker fx:id="mycolorpicker">
             <value>
                <Color />
             </value>
+            <VBox.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin>
          </ColorPicker>
-         <Label text="Välj storlek">
+         <Label text="Choose size">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
+            <VBox.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin>
          </Label>
-         <Slider fx:id="mysize" orientation="VERTICAL" prefHeight="234.0" prefWidth="97.0" showTickLabels="true" showTickMarks="true" value="50.0" />
+         <Slider fx:id="mysize" orientation="VERTICAL" prefHeight="174.0" prefWidth="90.0" showTickLabels="true" showTickMarks="true" value="50.0">
+            <VBox.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin></Slider>
       </VBox>
    </right>
    <center>
