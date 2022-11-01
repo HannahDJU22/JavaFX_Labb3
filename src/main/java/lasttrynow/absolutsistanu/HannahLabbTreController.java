@@ -106,4 +106,9 @@ public class HannahLabbTreController {
     public void onSelectShape(ActionEvent actionEvent) {
         shapeController="isSelected";
     }
+
+    public void removelastshape(ActionEvent actionEvent) {
+        myModel.myShapesList.remove(myModel.myShapesList.size()-1);
+        drawCanvas();
+    }
 }
