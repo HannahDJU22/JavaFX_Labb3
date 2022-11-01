@@ -9,6 +9,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+import java.util.Objects;
+
 public class HannahLabbTreController {
     public Button squarebutton;
     public Button rectanglebutton;
@@ -16,12 +18,14 @@ public class HannahLabbTreController {
     public Slider mysize;
     public Canvas canvas;
     public GraphicsContext context;
-
     String shapeController;
 
     HannahLabbTreModel myModel = new HannahLabbTreModel();
 
     public void initialize() {
+        //sätt default här att en knapp är vald direkt vid start
+        //använda Squarebutton?
+
         context = canvas.getGraphicsContext2D();
         context.setFill(Color.SILVER);
         context.fillRect(0, 0, 280, 280);
@@ -32,6 +36,12 @@ public class HannahLabbTreController {
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
+
+        //här kan jag i stället skapa ett objekt Hannahsshape shape = new Square(konstruktorns parametrar)
+        //MEN måste i Shapeklassen skapa statisk metod och lägg return new Square
+        //här nedan blir då i stället Shape shape = Shape.createShape(metoden alltså) + parametrarna
+        //se lektion 1/11  tid 2.35 ca in
+        //i stället för String för mina shapes, gör enum
 
         switch (shapeController) {
             case "square":
@@ -46,13 +56,15 @@ public class HannahLabbTreController {
                 for (HannahsShape shape : myModel.myShapesList
                 ) {
                     if (shape.isShapeSelected(mouseEvent)) {
-
-                        //här behöver jag få in om det är en kvadrat eller rektangel
-                        //nu ritar den kvadrat när jag ändrar rektangel
-
-                        shape.setColor(myModel.color.getValue());
-                        shape.setWidth(myModel.size.get().doubleValue());
-                        shape.setHeight(myModel.size.get().doubleValue());
+                        if(shape instanceof Square){
+                            shape.setColor(myModel.color.getValue());
+                            shape.setWidth(myModel.size.get().doubleValue());
+                            shape.setHeight(myModel.size.get().doubleValue());
+                        }
+                        if(shape instanceof Rectangle){
+                            shape.setColor(myModel.color.getValue());
+                            shape.setWidth(myModel.size.get().doubleValue()*1.5);
+                            shape.setHeight(myModel.size.get().doubleValue());}
                     }
                 }
 
@@ -81,7 +93,7 @@ public class HannahLabbTreController {
     public void onSquareButtonClicked(ActionEvent actionEvent) {
 
         shapeController="square";
-        //actionEvent.equals(squarebutton);
+        //actionEvent.equals(squarebutton)??;
 
     }
 

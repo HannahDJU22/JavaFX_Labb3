@@ -4,8 +4,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 public abstract class HannahsShape {
-    String shape;
 
+    String shape;
     double positionX, positionY;
     double width, height;
     Color color;
@@ -25,51 +25,39 @@ public abstract class HannahsShape {
 
     }
 
-
     public String getShape() {
         return shape;
     }
-
     public void setShape(String shape) {
         this.shape = shape;
     }
-
     public double getPositionX() {
         return positionX;
     }
-
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
-
     public double getPositionY() {
         return positionY;
     }
-
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
-
     public double getWidth() {
         return width;
     }
-
     public void setWidth(double width) {
         this.width = width;
     }
-
     public double getHeight() {
         return height;
     }
-
     public void setHeight(double height) {
         this.height = height;
     }
-
     public Color getColor() {
         return color;
     }
-
     public void setColor(Color color) {
         this.color = color;
     }
