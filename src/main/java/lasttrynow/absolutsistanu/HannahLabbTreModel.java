@@ -2,6 +2,7 @@ package lasttrynow.absolutsistanu;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -24,5 +25,10 @@ public class HannahLabbTreModel {
         myShapesList.add(new Rectangle("rectangle", mouseEvent.getX(), mouseEvent.getY(), size.getValue(), size.getValue(), color.getValue()));
 
     }
+
+    public void removeLastShapeFromCanvas(){
+        myShapesList.remove(myShapesList.size()-1);
+    }
+
 
 }

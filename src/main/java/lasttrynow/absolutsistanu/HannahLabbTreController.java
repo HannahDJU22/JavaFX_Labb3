@@ -107,8 +107,8 @@ public class HannahLabbTreController {
         shapeController="isSelected";
     }
 
-    public void removelastshape(ActionEvent actionEvent) {
-        myModel.myShapesList.remove(myModel.myShapesList.size()-1);
+    public void onUnDoClicked(ActionEvent actionEvent) {
+        myModel.removeLastShapeFromCanvas();
         drawCanvas();
     }
 }

@@ -3,6 +3,8 @@ package lasttrynow.absolutsistanu;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+import java.util.Objects;
+
 public abstract class HannahsShape {
 
     String shape;
@@ -62,5 +64,17 @@ public abstract class HannahsShape {
         this.color = color;
     }
 
+    //la till dessa efter lektion kring tester, detta behöver vara med för att kunna skriva tester
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HannahsShape that = (HannahsShape) o;
+        return Double.compare(that.positionX, positionX) == 0 && Double.compare(that.positionY, positionY) == 0 && Double.compare(that.width, width) == 0 && Double.compare(that.height, height) == 0 && Objects.equals(shape, that.shape) && Objects.equals(color, that.color);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(shape, positionX, positionY, width, height, color);
+    }
 }

@@ -24,7 +24,7 @@
             <font>
                <Font name="System Bold Italic" size="13.0" />
             </font></Button>
-         <Button fx:id="undoButton" mnemonicParsing="false" onAction="#removelastshape" text="UnDo Last Shape">
+         <Button fx:id="undoButton" mnemonicParsing="false" onAction="#onUnDoClicked" text="UnDo Last Shape">
             <font>
                <Font name="System Bold Italic" size="13.0" />
             </font>
