@@ -2,7 +2,6 @@ package lasttrynow.absolutsistanu;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -16,8 +15,6 @@ public class HannahLabbTreModel {
 
     List<HannahsShape> myShapesList = new ArrayList<>();
 
-    //kolla Monikas Pdf med "Ex MVC+JavaFX", hon har gjort klass Square och sen klass MyModel med add på listan
-
     public Square createSquareShape(double positionX, double positionY) {
         Square mySquareShape = new Square("square", positionX, positionY, size.getValue(), size.getValue(), color.getValue());
         myShapesList.add(mySquareShape);
@@ -28,8 +25,6 @@ public class HannahLabbTreModel {
         Rectangle myRectShape = new Rectangle("rectangle", positionX, positionY, size.getValue(), size.getValue(), color.getValue());
         myShapesList.add(myRectShape);
         return myRectShape;
-        //första koden
-        //myShapesList.add(new Rectangle("rectangle", positionX, positionY, size.getValue(), size.getValue(), color.getValue()));
 
     }
 

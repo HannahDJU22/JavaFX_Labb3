@@ -23,15 +23,17 @@ public class HannahLabbTreController {
     HannahLabbTreModel myModel = new HannahLabbTreModel();
 
     public void initialize() {
-        //sätt default här att en knapp är vald direkt vid start
-        //använda Squarebutton?
-
-        context = canvas.getGraphicsContext2D();
-        context.setFill(Color.SILVER);
-        context.fillRect(0, 0, 280, 280);
+        squarebutton.fire();
+        canvasShown();
 
         mysize.valueProperty().bindBidirectional(myModel.size);
         mycolorpicker.valueProperty().bindBidirectional(myModel.color);
+
+    }
+    private void canvasShown() {
+        context = canvas.getGraphicsContext2D();
+        context.setFill(Color.SILVER);
+        context.fillRect(0, 0, 280, 280);
 
     }
 
@@ -41,7 +43,7 @@ public class HannahLabbTreController {
         //MEN måste i Shapeklassen skapa statisk metod och lägg return new Square
         //här nedan blir då i stället Shape shape = Shape.createShape(metoden alltså) + parametrarna
         //se lektion 1/11  tid 2.35 ca in
-        //i stället för String för mina shapes, gör enum
+
 
         switch (shapeController) {
             case "square":
@@ -53,32 +55,34 @@ public class HannahLabbTreController {
 
                 break;
             case "isSelected":
-                for (HannahsShape shape : myModel.myShapesList
-                ) {
-                    if (shape.isShapeSelected(mouseEvent)) {
-                        if(shape instanceof Square){
-                            shape.setColor(myModel.color.getValue());
-                            shape.setWidth(myModel.size.get().doubleValue());
-                            shape.setHeight(myModel.size.get().doubleValue());
-                        }
-                        if(shape instanceof Rectangle){
-                            shape.setColor(myModel.color.getValue());
-                            shape.setWidth(myModel.size.get().doubleValue()*1.5);
-                            shape.setHeight(myModel.size.get().doubleValue());}
-                    }
-                }
+                changeOfDrawnShape(mouseEvent);
 
                 break;
         }
         drawCanvas();
     }
 
+    private void changeOfDrawnShape(MouseEvent mouseEvent) {
+        for (HannahsShape shape : myModel.myShapesList
+        ) {
+            if (shape.isShapeSelected(mouseEvent)) {
+                if(shape instanceof Square){
+                    shape.setColor(myModel.color.getValue());
+                    shape.setWidth(myModel.size.get().doubleValue());
+                    shape.setHeight(myModel.size.get().doubleValue());
+                }
+                if(shape instanceof Rectangle){
+                    shape.setColor(myModel.color.getValue());
+                    shape.setWidth(myModel.size.get().doubleValue()*1.5);
+                    shape.setHeight(myModel.size.get().doubleValue());}
+            }
+        }
+    }
+
     //flytta denna till Shape, sen skriva rätt typ av ritning i resp shape-klass/sub
     //här ska endast drawCanvas anropas från Shape
     public void drawCanvas(){
-        context.clearRect(0, 0, 280, 280);
-        context.setFill(Color.SILVER);
-        context.fillRect(0, 0, 280, 280);
+        canvasShown();
         for (HannahsShape shape: myModel.myShapesList) {
             if(shape.getClass().equals(Square.class)){
                 context.setFill(shape.getColor());
