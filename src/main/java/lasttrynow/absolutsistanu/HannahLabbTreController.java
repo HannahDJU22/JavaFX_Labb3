@@ -45,11 +45,11 @@ public class HannahLabbTreController {
 
         switch (shapeController) {
             case "square":
-                myModel.createSquareShape(mouseEvent);
+                myModel.createSquareShape(mouseEvent.getX(), mouseEvent.getY());
 
                 break;
             case "rectangle":
-                myModel.createRectangleShape(mouseEvent);
+                myModel.createRectangleShape(mouseEvent.getX(), mouseEvent.getY());
 
                 break;
             case "isSelected":
@@ -74,7 +74,7 @@ public class HannahLabbTreController {
     }
 
     //flytta denna till Shape, sen skriva rätt typ av ritning i resp shape-klass/sub
-    //här ska endast drawCanvas finnas som hämtar från Shape
+    //här ska endast drawCanvas anropas från Shape
     public void drawCanvas(){
         context.clearRect(0, 0, 280, 280);
         context.setFill(Color.SILVER);

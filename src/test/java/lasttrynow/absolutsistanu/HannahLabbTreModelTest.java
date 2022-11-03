@@ -1,43 +1,53 @@
 package lasttrynow.absolutsistanu;
 
+import javafx.scene.input.MouseEvent;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 
 class HannahLabbTreModelTest {
 
-    //behövs objektet från Model eller räcker listan?
     HannahLabbTreModel hannah = new HannahLabbTreModel();
-    List<HannahsShape> hannahMyShapesList = new ArrayList<>();
 
-    //testa om listan ökade när nytt shape-objekt skapaades
+
     @Test
     void isListLargerAfterNewShapeWasDrawn (){
-
+        //testa om listan ökade när nytt shape-objekt skapaades
         //tänker att jag vill kolla om listans size blivit större
-        //men måste innan nytt objekt läggs till i listan, veta hur stor den är
-        //för att se om size blivit större
+        //kolla getsize på listan
+        //anropa metod att lägga till en shape
+        //kolla därefter getSize på listan
 
-        hannahMyShapesList.size();
-        //vad assertas?
+        //eller anropa metod att lägga till en shape
+        //sedan assert that size == 1
 
+        hannah.myShapesList.size();
     }
 
-
-    //testa om listan faktiskt är uppdaterad när senaste shapen togs bort
-    //ev lägga till att rätt objekt togs bort
     @Test
     void isLastDrawnShapeReallyRemoved () {
+        //testa om listan faktiskt är uppdaterad när senaste shapen togs bort
+        //ev lägga till att rätt objekt togs bort
 
-        List<HannahsShape> expectedArrayList = hannahMyShapesList;
+        //anropa metod att lägga till objekt i listan
+        //anropa metod att undo senast
+        //assert that listan nu är 0
 
-        hannahMyShapesList.remove(true);
-       //vad ska  assert?
-
+        hannah.removeLastShapeFromCanvas();
+        assertThat(hannah.myShapesList).isNotEmpty();
     }
 
+    @Test
+    void isCreatedSquareActuallyInTheList() {
+        //jag har skapat en ny Square till min lista, testet kollar att just denna square ligger i listan
+
+        Square mySquare = hannah.createSquareShape(20, 20);
+        assertThat(hannah.myShapesList).contains(mySquare);
+    }
+
+
 }
+
 
 /*     var expected = new XXX();
         var actual=hannahMyShapesList.XXX();

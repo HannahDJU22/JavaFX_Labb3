@@ -2,7 +2,6 @@ package lasttrynow.absolutsistanu;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -17,12 +16,20 @@ public class HannahLabbTreModel {
 
     List<HannahsShape> myShapesList = new ArrayList<>();
 
-    public void createSquareShape(MouseEvent mouseEvent) {
-        myShapesList.add(new Square("square", mouseEvent.getX(), mouseEvent.getY(), size.getValue(), size.getValue(), color.getValue()));
+    //kolla Monikas Pdf med "Ex MVC+JavaFX", hon har gjort klass Square och sen klass MyModel med add på listan
+
+    public Square createSquareShape(double positionX, double positionY) {
+        Square mySquareShape = new Square("square", positionX, positionY, size.getValue(), size.getValue(), color.getValue());
+        myShapesList.add(mySquareShape);
+        return mySquareShape;
 
     }
-    public void createRectangleShape(MouseEvent mouseEvent){
-        myShapesList.add(new Rectangle("rectangle", mouseEvent.getX(), mouseEvent.getY(), size.getValue(), size.getValue(), color.getValue()));
+    public Rectangle createRectangleShape(double positionX, double positionY){
+        Rectangle myRectShape = new Rectangle("rectangle", positionX, positionY, size.getValue(), size.getValue(), color.getValue());
+        myShapesList.add(myRectShape);
+        return myRectShape;
+        //första koden
+        //myShapesList.add(new Rectangle("rectangle", positionX, positionY, size.getValue(), size.getValue(), color.getValue()));
 
     }
 

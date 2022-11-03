@@ -72,9 +72,19 @@ public abstract class HannahsShape {
         HannahsShape that = (HannahsShape) o;
         return Double.compare(that.positionX, positionX) == 0 && Double.compare(that.positionY, positionY) == 0 && Double.compare(that.width, width) == 0 && Double.compare(that.height, height) == 0 && Objects.equals(shape, that.shape) && Objects.equals(color, that.color);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(shape, positionX, positionY, width, height, color);
+    }
+    @Override
+    public String toString() {
+        return "HannahsShape{" +
+                "shape='" + shape + '\'' +
+                ", positionX=" + positionX +
+                ", positionY=" + positionY +
+                ", width=" + width +
+                ", height=" + height +
+                ", color=" + color +
+                '}';
     }
 }
