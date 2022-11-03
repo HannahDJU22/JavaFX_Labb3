@@ -66,4 +66,7 @@
    <center>
       <Canvas fx:id="canvas" height="280.0" onMouseClicked="#onCanvasClicked" width="280.0" BorderPane.alignment="CENTER" />
    </center>
+   <bottom>
+      <Button fx:id="savebutton" onAction="#onSaveButtonClicked" mnemonicParsing="false" text="SAVE" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,6 @@ public class HannahLabbTreModel {
 
     ObjectProperty<Number> size = new SimpleObjectProperty<>(50);
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.BLACK);
-
 
     List<HannahsShape> myShapesList = new ArrayList<>();
 
@@ -31,7 +31,6 @@ public class HannahLabbTreModel {
     public void removeLastShapeFromCanvas(){
         myShapesList.remove(myShapesList.size()-1);
     }
-
 
 
     public Number getSize() {
@@ -67,5 +66,10 @@ public class HannahLabbTreModel {
                 hannahLabbTreController.context.setFill(shape.getColor());
                 hannahLabbTreController.context.fillRect(shape.getPositionX(), shape.getPositionY(), shape.getWidth(), shape.getHeight());}
             }
+    }
+
+    public void saveToFile(File file){
+        //här ska all kod in för att göra om till SVG, när det är klart, då kan metoden köras och fil kan sparas
+
     }
 }

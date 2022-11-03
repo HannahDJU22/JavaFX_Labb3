@@ -8,6 +8,10 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 public class HannahLabbTreController {
     public Button squarebutton;
@@ -17,6 +21,7 @@ public class HannahLabbTreController {
     public Canvas canvas;
     public GraphicsContext context;
     String shapeController;
+    public Stage stage;
 
     HannahLabbTreModel myModel = new HannahLabbTreModel();
 
@@ -38,18 +43,9 @@ public class HannahLabbTreController {
     public void onCanvasClicked(MouseEvent mouseEvent) {
 
         switch (shapeController) {
-            case "square":
-                myModel.createSquareShape(mouseEvent.getX(), mouseEvent.getY());
-
-                break;
-            case "rectangle":
-                myModel.createRectangleShape(mouseEvent.getX(), mouseEvent.getY());
-
-                break;
-            case "isSelected":
-                changeOfDrawnShape(mouseEvent);
-
-                break;
+            case "square" -> myModel.createSquareShape(mouseEvent.getX(), mouseEvent.getY());
+            case "rectangle" -> myModel.createRectangleShape(mouseEvent.getX(), mouseEvent.getY());
+            case "isSelected" -> changeOfDrawnShape(mouseEvent);
         }
         drawCanvas();
     }
@@ -95,5 +91,18 @@ public class HannahLabbTreController {
     public void onUnDoClicked(ActionEvent actionEvent) {
         myModel.removeLastShapeFromCanvas();
         drawCanvas();
+    }
+
+    public void onSaveButtonClicked(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save as...");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().clear();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SVG", "*.svg"));
+
+
+        File file = fileChooser.showSaveDialog(stage);
+        if(file !=null)
+            myModel.saveToFile(file);
     }
 }
