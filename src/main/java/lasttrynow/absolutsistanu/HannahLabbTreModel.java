@@ -9,6 +9,30 @@ import java.util.List;
 
 public class HannahLabbTreModel {
 
+    public Number getSize() {
+        return size.get();
+    }
+
+    public ObjectProperty<Number> sizeProperty() {
+        return size;
+    }
+
+    public void setSize(Number size) {
+        this.size.set(size);
+    }
+
+    public Color getColor() {
+        return color.get();
+    }
+
+    public ObjectProperty<Color> colorProperty() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color.set(color);
+    }
+
     ObjectProperty<Number> size = new SimpleObjectProperty<>(50);
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.BLACK);
 

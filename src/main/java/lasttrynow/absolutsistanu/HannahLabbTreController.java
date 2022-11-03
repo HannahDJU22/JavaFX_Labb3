@@ -9,8 +9,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.util.Objects;
-
 public class HannahLabbTreController {
     public Button squarebutton;
     public Button rectanglebutton;
@@ -26,8 +24,8 @@ public class HannahLabbTreController {
         squarebutton.fire();
         canvasShown();
 
-        mysize.valueProperty().bindBidirectional(myModel.size);
-        mycolorpicker.valueProperty().bindBidirectional(myModel.color);
+        mysize.valueProperty().bindBidirectional(myModel.sizeProperty());
+        mycolorpicker.valueProperty().bindBidirectional(myModel.colorProperty());
 
     }
     private void canvasShown() {
@@ -38,12 +36,6 @@ public class HannahLabbTreController {
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
-
-        //här kan jag i stället skapa ett objekt Hannahsshape shape = new Square(konstruktorns parametrar)
-        //MEN måste i Shapeklassen skapa statisk metod och lägg return new Square
-        //här nedan blir då i stället Shape shape = Shape.createShape(metoden alltså) + parametrarna
-        //se lektion 1/11  tid 2.35 ca in
-
 
         switch (shapeController) {
             case "square":
@@ -79,8 +71,7 @@ public class HannahLabbTreController {
         }
     }
 
-    //flytta denna till Shape, sen skriva rätt typ av ritning i resp shape-klass/sub
-    //här ska endast drawCanvas anropas från Shape
+
     public void drawCanvas(){
         canvasShown();
         for (HannahsShape shape: myModel.myShapesList) {
@@ -97,14 +88,11 @@ public class HannahLabbTreController {
     public void onSquareButtonClicked(ActionEvent actionEvent) {
 
         shapeController="square";
-        //actionEvent.equals(squarebutton)??;
-
     }
 
     public void onRectangleButtonClicked(ActionEvent actionEvent) {
 
         shapeController="rectangle";
-
     }
 
     public void onSelectShape(ActionEvent actionEvent) {
