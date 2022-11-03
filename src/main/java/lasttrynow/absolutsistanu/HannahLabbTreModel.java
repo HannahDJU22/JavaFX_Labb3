@@ -9,30 +9,6 @@ import java.util.List;
 
 public class HannahLabbTreModel {
 
-    public Number getSize() {
-        return size.get();
-    }
-
-    public ObjectProperty<Number> sizeProperty() {
-        return size;
-    }
-
-    public void setSize(Number size) {
-        this.size.set(size);
-    }
-
-    public Color getColor() {
-        return color.get();
-    }
-
-    public ObjectProperty<Color> colorProperty() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color.set(color);
-    }
-
     ObjectProperty<Number> size = new SimpleObjectProperty<>(50);
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.BLACK);
 
@@ -57,4 +33,39 @@ public class HannahLabbTreModel {
     }
 
 
+
+    public Number getSize() {
+        return size.get();
+    }
+
+    public ObjectProperty<Number> sizeProperty() {
+        return size;
+    }
+
+    public void setSize(Number size) {
+        this.size.set(size);
+    }
+
+    public Color getColor() {
+        return color.get();
+    }
+
+    public ObjectProperty<Color> colorProperty() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color.set(color);
+    }
+
+    void drawShapesonCanvas(HannahLabbTreController hannahLabbTreController) {
+        for (HannahsShape shape: myShapesList) {
+            if(shape.getClass().equals(Square.class)){
+                hannahLabbTreController.context.setFill(shape.getColor());
+                hannahLabbTreController.context.fillRect(shape.getPositionX(), shape.getPositionY(),shape.getWidth(), shape.getHeight());}
+            if(shape.getClass().equals(Rectangle.class)){
+                hannahLabbTreController.context.setFill(shape.getColor());
+                hannahLabbTreController.context.fillRect(shape.getPositionX(), shape.getPositionY(), shape.getWidth(), shape.getHeight());}
+            }
+    }
 }

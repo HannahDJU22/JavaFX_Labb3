@@ -74,15 +74,8 @@ public class HannahLabbTreController {
 
     public void drawCanvas(){
         canvasShown();
-        for (HannahsShape shape: myModel.myShapesList) {
-            if(shape.getClass().equals(Square.class)){
-                context.setFill(shape.getColor());
-                context.fillRect(shape.getPositionX(), shape.getPositionY(),shape.getWidth(), shape.getHeight());}
-            if(shape.getClass().equals(Rectangle.class)){
-                context.setFill(shape.getColor());
-                context.fillRect(shape.getPositionX(), shape.getPositionY(), shape.getWidth(), shape.getHeight());}
-            }
-        }
+        myModel.drawShapesonCanvas(this);
+    }
 
 
     public void onSquareButtonClicked(ActionEvent actionEvent) {
