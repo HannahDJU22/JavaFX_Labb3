@@ -64,7 +64,7 @@ public abstract class HannahsShape {
         this.color = color;
     }
 
-    //la till dessa efter lektion kring tester, detta behöver vara med för att kunna skriva tester
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

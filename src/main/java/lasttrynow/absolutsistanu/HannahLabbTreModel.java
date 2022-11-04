@@ -2,11 +2,15 @@ package lasttrynow.absolutsistanu;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+
+//blir det för mycket här kan man dela upp i flera modell-klasser
 
 public class HannahLabbTreModel {
 
@@ -14,7 +18,13 @@ public class HannahLabbTreModel {
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.BLACK);
 
     List<HannahsShape> myShapesList = new ArrayList<>();
+    String shapeController;
 
+
+
+    //i stället för två create = skapa en createmetod i Shapeklassen, sen ärvs detta till sub-klasserna
+    //ex create eller draw shape - ha som namn
+    //anropar sedan denna draw/create-metod med shape controller variabeln som inparameter
     public Square createSquareShape(double positionX, double positionY) {
         Square mySquareShape = new Square("square", positionX, positionY, size.getValue(), size.getValue(), color.getValue());
         myShapesList.add(mySquareShape);
@@ -71,5 +81,30 @@ public class HannahLabbTreModel {
     public void saveToFile(File file){
         //här ska all kod in för att göra om till SVG, när det är klart, då kan metoden köras och fil kan sparas
 
+    }
+
+    void changeDrawnShape(MouseEvent mouseEvent) {
+        for (HannahsShape shape : myShapesList
+        ) {
+            if (shape.isShapeSelected(mouseEvent)) {
+                if(shape instanceof Square){
+                    shape.setColor(color.getValue());
+                    shape.setWidth(size.get().doubleValue());
+                    shape.setHeight(size.get().doubleValue());
+                }
+                if(shape instanceof Rectangle){
+                    shape.setColor(color.getValue());
+                    shape.setWidth(size.get().doubleValue()*1.5);
+                    shape.setHeight(size.get().doubleValue());}
+            }
+        }
+    }
+
+    void buttonEvent(MouseEvent mouseEvent) {
+        switch (shapeController) {
+            case "square" -> createSquareShape(mouseEvent.getX(), mouseEvent.getY());
+            case "rectangle" -> createRectangleShape(mouseEvent.getX(), mouseEvent.getY());
+            case "isSelected" -> changeDrawnShape(mouseEvent);
+        }
     }
 }

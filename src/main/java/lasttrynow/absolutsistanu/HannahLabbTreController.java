@@ -20,7 +20,7 @@ public class HannahLabbTreController {
     public Slider mysize;
     public Canvas canvas;
     public GraphicsContext context;
-    String shapeController;
+
     public Stage stage;
 
     HannahLabbTreModel myModel = new HannahLabbTreModel();
@@ -37,34 +37,12 @@ public class HannahLabbTreController {
         context = canvas.getGraphicsContext2D();
         context.setFill(Color.SILVER);
         context.fillRect(0, 0, 280, 280);
-
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
 
-        switch (shapeController) {
-            case "square" -> myModel.createSquareShape(mouseEvent.getX(), mouseEvent.getY());
-            case "rectangle" -> myModel.createRectangleShape(mouseEvent.getX(), mouseEvent.getY());
-            case "isSelected" -> changeOfDrawnShape(mouseEvent);
-        }
+        myModel.buttonEvent(mouseEvent);
         drawCanvas();
-    }
-
-    private void changeOfDrawnShape(MouseEvent mouseEvent) {
-        for (HannahsShape shape : myModel.myShapesList
-        ) {
-            if (shape.isShapeSelected(mouseEvent)) {
-                if(shape instanceof Square){
-                    shape.setColor(myModel.color.getValue());
-                    shape.setWidth(myModel.size.get().doubleValue());
-                    shape.setHeight(myModel.size.get().doubleValue());
-                }
-                if(shape instanceof Rectangle){
-                    shape.setColor(myModel.color.getValue());
-                    shape.setWidth(myModel.size.get().doubleValue()*1.5);
-                    shape.setHeight(myModel.size.get().doubleValue());}
-            }
-        }
     }
 
 
@@ -76,16 +54,16 @@ public class HannahLabbTreController {
 
     public void onSquareButtonClicked(ActionEvent actionEvent) {
 
-        shapeController="square";
+        myModel.shapeController="square";
     }
 
     public void onRectangleButtonClicked(ActionEvent actionEvent) {
 
-        shapeController="rectangle";
+        myModel.shapeController="rectangle";
     }
 
     public void onSelectShape(ActionEvent actionEvent) {
-        shapeController="isSelected";
+        myModel.shapeController="isSelected";
     }
 
     public void onUnDoClicked(ActionEvent actionEvent) {
