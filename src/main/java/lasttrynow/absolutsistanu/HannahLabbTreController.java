@@ -1,7 +1,6 @@
 package lasttrynow.absolutsistanu;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.value.ObservableStringValue;
+
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

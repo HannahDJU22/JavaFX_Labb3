@@ -44,7 +44,15 @@ public class HannahLabbTreModel {
         myShapesList.remove(myShapesList.size()-1);
     }
 
+    private String format(double val) {
+        String in = Integer.toHexString((int) Math.round(val * 255));
+        return in.length() == 1 ? "0" + in : in;
+    }
 
+    public String toHexString(Color value) {
+        return "#" + (format(value.getRed()) + format(value.getGreen()) + format(value.getBlue()) + format(value.getOpacity()))
+                .toUpperCase();
+    }
     public Number getSize() {
         return size.get();
     }
@@ -81,28 +89,35 @@ public class HannahLabbTreModel {
     }
 
     public void saveToFile(Path file){
-        //här ska all kod in för att göra om till SVG, när det är klart, då kan metoden köras och fil kan sparas
-//omvandla alla shapes till en svg-fil
-        StringBuffer outPut= new StringBuffer();
+
+        StringBuilder outPut= new StringBuilder();
+
+        outPut.append("<svg version=\1.1\" width=\"280\" height =\"260\" xmlns=\"http://www.w3.org/2000/svg\">\n");
+
         for (HannahsShape shape2:myShapesList){
-            outPut.append(shape2.getShape());
-            outPut.append(", ");
-            outPut.append(shape2.getPositionX());
-            outPut.append(", ");
-            outPut.append(shape2.getPositionY());
-            outPut.append(", ");
-            outPut.append(shape2.getColor());
-            outPut.append(", ");
-            outPut.append(shape2.getWidth());
-            outPut.append(", ");
-            outPut.append(shape2.getHeight());
-            outPut.append("\n");
+            outPut.append("<shape=\"").append(shape2.getShape());
+
+            outPut.append("\" positionY=\"").append(shape2.getPositionX());
+
+            outPut.append("\" positionY=\"").append(shape2.getPositionY());
+
+            outPut.append("\" color=\"").append(shape2.getColor());
+
+            outPut.append("\" width=\"").append(shape2.getWidth());
+
+            outPut.append("\" height=\"").append(shape2.getHeight());
+            outPut.append("/>\n");
         }
+        outPut.append("<svg/>");
+
         try {
             Files.writeString(file, outPut.toString());
+            //vad ska closes???  .close();
+            System.out.println("Save success");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     void changeDrawnShape(MouseEvent mouseEvent) {
