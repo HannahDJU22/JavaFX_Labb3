@@ -5,7 +5,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,9 +80,29 @@ public class HannahLabbTreModel {
             }
     }
 
-    public void saveToFile(File file){
+    public void saveToFile(Path file){
         //här ska all kod in för att göra om till SVG, när det är klart, då kan metoden köras och fil kan sparas
-
+//omvandla alla shapes till en svg-fil
+        StringBuffer outPut= new StringBuffer();
+        for (HannahsShape shape2:myShapesList){
+            outPut.append(shape2.getShape());
+            outPut.append(", ");
+            outPut.append(shape2.getPositionX());
+            outPut.append(", ");
+            outPut.append(shape2.getPositionY());
+            outPut.append(", ");
+            outPut.append(shape2.getColor());
+            outPut.append(", ");
+            outPut.append(shape2.getWidth());
+            outPut.append(", ");
+            outPut.append(shape2.getHeight());
+            outPut.append("\n");
+        }
+        try {
+            Files.writeString(file, outPut.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     void changeDrawnShape(MouseEvent mouseEvent) {

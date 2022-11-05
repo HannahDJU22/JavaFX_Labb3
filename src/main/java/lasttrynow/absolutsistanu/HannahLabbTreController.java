@@ -1,5 +1,7 @@
 package lasttrynow.absolutsistanu;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableStringValue;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,6 +24,7 @@ public class HannahLabbTreController {
     public GraphicsContext context;
 
     public Stage stage;
+    public Button savebutton;
 
     HannahLabbTreModel myModel = new HannahLabbTreModel();
 
@@ -77,10 +80,16 @@ public class HannahLabbTreController {
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SVG", "*.svg"));
+        fileChooser.setInitialFileName("LookAtThis");
+        File filepath = fileChooser.showSaveDialog(stage);
 
+        //File file = fileChooser.showSaveDialog(stage);
+        if(filepath !=null){
+            //java.nio.file.Path path = java.nio.file.Path.of(filepath.toURI());
+           // myModel.saveToFile(path);
 
-        File file = fileChooser.showSaveDialog(stage);
-        if(file !=null)
-            myModel.saveToFile(file);
+            myModel.saveToFile(filepath.toPath());
+        }
+
     }
 }

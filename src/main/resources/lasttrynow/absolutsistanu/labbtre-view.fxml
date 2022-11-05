@@ -38,7 +38,7 @@
                <Font name="System Bold" size="14.0" />
             </font>
             <VBox.margin>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               <Insets left="5.0" right="5.0" />
             </VBox.margin>
          </Label>
          <ColorPicker fx:id="mycolorpicker">
@@ -64,9 +64,15 @@
       </VBox>
    </right>
    <center>
-      <Canvas fx:id="canvas" height="280.0" onMouseClicked="#onCanvasClicked" width="280.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="260.0" onMouseClicked="#onCanvasClicked" width="280.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Button fx:id="savebutton" onAction="#onSaveButtonClicked" mnemonicParsing="false" text="SAVE" BorderPane.alignment="CENTER" />
+      <Button fx:id="savebutton" mnemonicParsing="false" onAction="#onSaveButtonClicked" text="SAVE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin></Button>
    </bottom>
 </BorderPane>
