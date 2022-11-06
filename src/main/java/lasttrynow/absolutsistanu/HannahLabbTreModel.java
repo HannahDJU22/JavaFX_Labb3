@@ -107,7 +107,7 @@ public class HannahLabbTreModel {
             outPut.append("\" stroke-width=\"1\"");
             outPut.append("/>\n");
         }
-        outPut.append("<svg/>");
+        outPut.append("</svg>");
         System.out.println(outPut);
 
         try {
