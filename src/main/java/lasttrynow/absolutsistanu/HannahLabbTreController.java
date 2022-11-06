@@ -87,7 +87,7 @@ public class HannahLabbTreController {
             //java.nio.file.Path path = java.nio.file.Path.of(filepath.toURI());
            // myModel.saveToFile(path);
 
-            myModel.saveToFile(filepath.toPath());
+            myModel.saveToFile(filepath);
         }
 
     }
