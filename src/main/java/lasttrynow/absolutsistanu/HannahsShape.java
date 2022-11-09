@@ -1,18 +1,13 @@
 package lasttrynow.absolutsistanu;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
 import java.util.Objects;
 
 public abstract class HannahsShape {
-
     String shape;
     double positionX, positionY;
     double width, height;
     Color color;
-
-    public abstract boolean isShapeSelected(MouseEvent mouseEvent);
 
     public HannahsShape(String shape, double positionX, double positionY, double width, double height, Color color) {
         this.shape = shape;
@@ -22,10 +17,11 @@ public abstract class HannahsShape {
         this.height = height;
         this.color = color;
     }
-
     public HannahsShape(){
 
     }
+
+    public abstract boolean isShapeSelected(MouseEvent mouseEvent);
 
     public String getShape() {
         return shape;
@@ -63,7 +59,6 @@ public abstract class HannahsShape {
     public void setColor(Color color) {
         this.color = color;
     }
-
 
     @Override
     public boolean equals(Object o) {

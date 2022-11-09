@@ -1,6 +1,4 @@
 package lasttrynow.absolutsistanu;
-
-
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,7 +19,6 @@ public class HannahLabbTreController {
     public Slider mysize;
     public Canvas canvas;
     public GraphicsContext context;
-
     public Stage stage;
     public Button savebutton;
 
@@ -33,46 +30,36 @@ public class HannahLabbTreController {
 
         mysize.valueProperty().bindBidirectional(myModel.sizeProperty());
         mycolorpicker.valueProperty().bindBidirectional(myModel.colorProperty());
-
     }
     private void canvasShown() {
         context = canvas.getGraphicsContext2D();
         context.setFill(Color.SILVER);
         context.fillRect(0, 0, 280, 280);
     }
-
     public void onCanvasClicked(MouseEvent mouseEvent) {
 
         myModel.buttonEvent(mouseEvent);
         drawCanvas();
     }
-
-
     public void drawCanvas(){
         canvasShown();
         myModel.drawShapesonCanvas(this);
     }
-
-
     public void onSquareButtonClicked(ActionEvent actionEvent) {
 
         myModel.shapeController="square";
     }
-
     public void onRectangleButtonClicked(ActionEvent actionEvent) {
 
         myModel.shapeController="rectangle";
     }
-
     public void onSelectShape(ActionEvent actionEvent) {
         myModel.shapeController="isSelected";
     }
-
     public void onUnDoClicked(ActionEvent actionEvent) {
         myModel.removeLastShapeFromCanvas();
         drawCanvas();
     }
-
     public void onSaveButtonClicked(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save as...");
@@ -82,13 +69,9 @@ public class HannahLabbTreController {
         fileChooser.setInitialFileName("LookAtThis");
         File filepath = fileChooser.showSaveDialog(stage);
 
-        //File file = fileChooser.showSaveDialog(stage);
         if(filepath !=null){
-            //java.nio.file.Path path = java.nio.file.Path.of(filepath.toURI());
-           // myModel.saveToFile(path);
 
             myModel.saveToFile(filepath);
         }
-
     }
 }

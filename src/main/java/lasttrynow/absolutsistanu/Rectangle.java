@@ -1,5 +1,4 @@
 package lasttrynow.absolutsistanu;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
