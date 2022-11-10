@@ -61,7 +61,7 @@ public class HannahLabbTreModel {
 
         for (HannahsShape shape2:myShapesList){
 
-            outPut.append("\"<rect x=\"").append(shape2.getPositionX());
+            outPut.append("<rect x=\"").append(shape2.getPositionX());
             outPut.append("\" y=\"").append(shape2.getPositionY());
             outPut.append("\" width=\"").append(shape2.getWidth());
             outPut.append("\" height=\"").append(shape2.getHeight());
